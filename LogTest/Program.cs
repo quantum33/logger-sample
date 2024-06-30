@@ -1,17 +1,15 @@
-using System;
-using System.Linq;
 using LogTest.Entities;
 using LogTest.Loggers;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using LogTest.Temp;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddLogging(b => b.AddCustomFormatter(_ => { }));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IMyScopedService, MyScopedService>();
+builder.Services.AddSingleton<IMessageHandler, MessageHandler>();
 
 var app = builder.Build();
 
