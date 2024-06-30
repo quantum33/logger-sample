@@ -1,7 +1,11 @@
-using System.Text.Json;
-using LogTest;
+using System;
+using System.Linq;
 using LogTest.Entities;
 using LogTest.Loggers;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
